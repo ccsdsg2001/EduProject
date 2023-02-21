@@ -1,6 +1,7 @@
 package com.example.guliMall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +26,19 @@ import com.example.common.utils.R;
  * @date 2023-02-17 21:47:13
  */
 @RestController
-@RequestMapping("product/pmscategory")
+@RequestMapping("product/category")
 public class PmsCategoryController {
     @Autowired
     private PmsCategoryService pmsCategoryService;
 
     /**
-     * 列表
+     * 列表  查出所有分类子分类 以树形结构组装起来
      */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = pmsCategoryService.queryPage(params);
+    @RequestMapping("/list/tree")
+    public R list( ){
+        List<PmsCategoryEntity> entities = pmsCategoryService.listWithTree();
 
-        return R.ok().put("page", page);
+        return R.ok().put("data", entities);
     }
 
 

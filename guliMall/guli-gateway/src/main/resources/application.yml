@@ -11,3 +11,18 @@ spring:
           uri: https://www.qq.com
           predicates:
             - Query=url,qq
+
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: guli-gateway
+#          前端项目 如api
+server:
+  port: 88

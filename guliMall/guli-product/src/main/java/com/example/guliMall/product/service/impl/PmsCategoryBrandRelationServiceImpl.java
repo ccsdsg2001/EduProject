@@ -1,6 +1,8 @@
 package com.example.guliMall.product.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +26,15 @@ public class PmsCategoryBrandRelationServiceImpl extends ServiceImpl<PmsCategory
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public void removeMenuByids(List<Long> asList) {
+        //TODO check annotate
+        //逻辑删除
+
+
+        baseMapper.deleteBatchIds(asList);
     }
 
 }

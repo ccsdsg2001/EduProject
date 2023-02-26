@@ -49,7 +49,7 @@ public class PmsCategoryController {
     public R info(@PathVariable("catId") Long catId){
 		PmsCategoryEntity pmsCategory = pmsCategoryService.getById(catId);
 
-        return R.ok().put("pmsCategory", pmsCategory);
+        return R.ok().put("data", pmsCategory);
     }
 
     /**
@@ -68,6 +68,13 @@ public class PmsCategoryController {
     @RequestMapping("/update")
     public R update(@RequestBody PmsCategoryEntity pmsCategory){
 		pmsCategoryService.updateById(pmsCategory);
+
+        return R.ok();
+    }
+
+    @RequestMapping("/update/sort")
+    public R updatesort(@RequestBody PmsCategoryEntity[] pmsCategory){
+        pmsCategoryService.updateBatchById(Arrays.asList(pmsCategory));
 
         return R.ok();
     }

@@ -14,7 +14,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 public class crossConfiguration {
 
     @Bean
-    public CorsWebFilter corsWebFilter() {
+public CorsWebFilter corsWebFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
         CorsConfiguration corsConfiguration = new CorsConfiguration();

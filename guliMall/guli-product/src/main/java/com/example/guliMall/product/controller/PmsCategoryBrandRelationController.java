@@ -22,7 +22,7 @@ import com.example.common.utils.R;
  * @date 2023-02-17 21:28:00
  */
 @RestController
-@RequestMapping("product/pmscategorybrandrelation")
+@RequestMapping("product/categorybrandrelation")
 public class PmsCategoryBrandRelationController {
     @Autowired
     private PmsCategoryBrandRelationService pmsCategoryBrandRelationService;

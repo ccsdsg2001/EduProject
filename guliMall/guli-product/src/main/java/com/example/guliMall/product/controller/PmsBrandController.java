@@ -1,9 +1,11 @@
 package com.example.guliMall.product.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import com.example.guliMall.product.service.PmsBrandService;
 import com.example.common.utils.PageUtils;
 import com.example.common.utils.R;
 
+import javax.validation.Valid;
 
 
 /**
@@ -25,7 +28,7 @@ import com.example.common.utils.R;
  * @date 2023-02-17 21:47:13
  */
 @RestController
-@RequestMapping("product/pmsbrand")
+@RequestMapping("product/brand")
 public class PmsBrandController {
     @Autowired
     private PmsBrandService pmsBrandService;
@@ -55,8 +58,20 @@ public class PmsBrandController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody PmsBrandEntity pmsBrand){
-		pmsBrandService.save(pmsBrand);
+    public R save(@Valid @RequestBody PmsBrandEntity pmsBrand, BindingResult result){
+//        if(result.hasErrors()){
+//            Map<String,String > map = new HashMap<>();
+//            result.getFieldErrors().forEach((item)->{
+//                String message = item.getDefaultMessage();
+//                String field = item.getField();
+//                map.put(field,message);
+//            });
+//
+//            R.error(400,"数据不合法").put("data", map);
+//        }else {
+            pmsBrandService.save(pmsBrand);
+//        }
+
 
         return R.ok();
     }

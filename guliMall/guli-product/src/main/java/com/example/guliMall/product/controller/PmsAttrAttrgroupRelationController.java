@@ -25,7 +25,7 @@ import com.example.common.utils.R;
  * @date 2023-02-17 21:47:13
  */
 @RestController
-@RequestMapping("product/pmsattrattrgrouprelation")
+@RequestMapping("product/attrattrgrouprelation")
 public class PmsAttrAttrgroupRelationController {
     @Autowired
     private PmsAttrAttrgroupRelationService pmsAttrAttrgroupRelationService;
@@ -48,7 +48,7 @@ public class PmsAttrAttrgroupRelationController {
     public R info(@PathVariable("id") Long id){
 		PmsAttrAttrgroupRelationEntity pmsAttrAttrgroupRelation = pmsAttrAttrgroupRelationService.getById(id);
 
-        return R.ok().put("pmsAttrAttrgroupRelation", pmsAttrAttrgroupRelation);
+        return R.ok().put("attrAttrgroupRelation", pmsAttrAttrgroupRelation);
     }
 
     /**

@@ -1,9 +1,11 @@
 package com.example.guliMall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +40,19 @@ public class PmsCategoryBrandRelationController {
         return R.ok().put("page", page);
     }
 
+    @GetMapping("/catelog/list")
+    //獲取當前品牌關聯所有分類列表
+//    @RequiresPermissions("product:pmscategorybrandrelation:list")
+    public R listcatelog(@RequestParam("brandId") Long brandId){
+        List<PmsCategoryBrandRelationEntity> data =pmsCategoryBrandRelationService.list(
+                new QueryWrapper<PmsCategoryBrandRelationEntity>().eq("brand_id", brandId)
+        );
+
+
+
+        return R.ok().put("data", data);
+    }
+
 
     /**
      * 信息
@@ -47,7 +62,7 @@ public class PmsCategoryBrandRelationController {
     public R info(@PathVariable("id") Long id){
 		PmsCategoryBrandRelationEntity pmsCategoryBrandRelation = pmsCategoryBrandRelationService.getById(id);
 
-        return R.ok().put("pmsCategoryBrandRelation", pmsCategoryBrandRelation);
+        return R.ok().put("categoryBrandRelation", pmsCategoryBrandRelation);
     }
 
     /**
@@ -56,7 +71,10 @@ public class PmsCategoryBrandRelationController {
     @RequestMapping("/save")
 //    @RequiresPermissions("product:pmscategorybrandrelation:save")
     public R save(@RequestBody PmsCategoryBrandRelationEntity pmsCategoryBrandRelation){
-		pmsCategoryBrandRelationService.save(pmsCategoryBrandRelation);
+
+
+
+		pmsCategoryBrandRelationService.saveDetail(pmsCategoryBrandRelation);
 
         return R.ok();
     }

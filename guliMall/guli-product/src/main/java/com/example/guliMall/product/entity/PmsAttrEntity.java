@@ -61,4 +61,6 @@ public class PmsAttrEntity implements Serializable {
 	 */
 	private Integer showDesc;
 
+
+
 }

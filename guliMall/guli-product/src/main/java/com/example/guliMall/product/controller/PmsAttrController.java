@@ -3,12 +3,11 @@ package com.example.guliMall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.example.guliMall.product.vo.AttrGroupRelationVo;
+import com.example.guliMall.product.vo.attrresponsevo;
+import com.example.guliMall.product.vo.attrvo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.guliMall.product.entity.PmsAttrEntity;
 import com.example.guliMall.product.service.PmsAttrService;
@@ -25,10 +24,18 @@ import com.example.common.utils.R;
  * @date 2023-02-17 21:47:14
  */
 @RestController
-@RequestMapping("product/pmsattr")
+@RequestMapping("product/attr")
 public class PmsAttrController {
     @Autowired
     private PmsAttrService pmsAttrService;
+
+
+    @GetMapping("/{attrType}/list/{catelogId}")
+    public R attrList(@RequestParam Map<String,Object> params,@PathVariable("attrType") String type,
+                      @PathVariable("catelogId") Long catelogId){
+        PageUtils page =pmsAttrService.queryBaseAttrPage(params,catelogId,type);
+        return R.ok().put("page", page);
+    }
 
     /**
      * 列表
@@ -41,22 +48,30 @@ public class PmsAttrController {
     }
 
 
+    @PostMapping("/attr/relation/delete")
+    public R deleteRelation(@RequestBody AttrGroupRelationVo[] vos){
+        pmsAttrService.deletRelation(vos);
+        return R.ok();
+
+    }
+
     /**
      * 信息
      */
     @RequestMapping("/info/{attrId}")
     public R info(@PathVariable("attrId") Long attrId){
-		PmsAttrEntity pmsAttr = pmsAttrService.getById(attrId);
+//		PmsAttrEntity pmsAttr = pmsAttrService.getById(attrId);
 
-        return R.ok().put("pmsAttr", pmsAttr);
+        attrresponsevo responVo=pmsAttrService.getattrInfo(attrId);
+        return R.ok().put("attr", responVo);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody PmsAttrEntity pmsAttr){
-		pmsAttrService.save(pmsAttr);
+    public R save(@RequestBody attrvo pmsAttr){
+		pmsAttrService.saveAttr(pmsAttr);
 
         return R.ok();
     }
@@ -65,8 +80,8 @@ public class PmsAttrController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody PmsAttrEntity pmsAttr){
-		pmsAttrService.updateById(pmsAttr);
+    public R update(@RequestBody attrvo pmsAttr){
+		pmsAttrService.updateattr(pmsAttr);
 
         return R.ok();
     }

@@ -25,7 +25,7 @@ import com.example.common.utils.R;
  * @date 2023-02-17 21:47:13
  */
 @RestController
-@RequestMapping("product/pmsspucomment")
+@RequestMapping("product/spucomment")
 public class PmsSpuCommentController {
     @Autowired
     private PmsSpuCommentService pmsSpuCommentService;
@@ -48,7 +48,7 @@ public class PmsSpuCommentController {
     public R info(@PathVariable("id") Long id){
 		PmsSpuCommentEntity pmsSpuComment = pmsSpuCommentService.getById(id);
 
-        return R.ok().put("pmsSpuComment", pmsSpuComment);
+        return R.ok().put("spuComment", pmsSpuComment);
     }
 
     /**

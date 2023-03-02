@@ -4,6 +4,8 @@ import com.example.guliMall.product.entity.PmsAttrAttrgroupRelationEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 属性&属性分组关联
  * 
@@ -13,5 +15,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface PmsAttrAttrgroupRelationDao extends BaseMapper<PmsAttrAttrgroupRelationEntity> {
-	
+
+    void deleteBatchRelation(List<PmsAttrAttrgroupRelationEntity> entities);
 }

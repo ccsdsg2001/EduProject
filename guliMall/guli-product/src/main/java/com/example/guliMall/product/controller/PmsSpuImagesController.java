@@ -25,7 +25,7 @@ import com.example.common.utils.R;
  * @date 2023-02-17 21:47:13
  */
 @RestController
-@RequestMapping("product/pmsspuimages")
+@RequestMapping("product/spuimages")
 public class PmsSpuImagesController {
     @Autowired
     private PmsSpuImagesService pmsSpuImagesService;
@@ -48,7 +48,7 @@ public class PmsSpuImagesController {
     public R info(@PathVariable("id") Long id){
 		PmsSpuImagesEntity pmsSpuImages = pmsSpuImagesService.getById(id);
 
-        return R.ok().put("pmsSpuImages", pmsSpuImages);
+        return R.ok().put("spuImages", pmsSpuImages);
     }
 
     /**

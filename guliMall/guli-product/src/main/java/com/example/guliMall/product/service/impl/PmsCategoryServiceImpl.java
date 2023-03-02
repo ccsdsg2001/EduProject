@@ -1,10 +1,10 @@
 package com.example.guliMall.product.service.impl;
 
+import com.example.guliMall.product.service.PmsCategoryBrandRelationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -16,6 +16,7 @@ import com.example.common.utils.Query;
 import com.example.guliMall.product.dao.PmsCategoryDao;
 import com.example.guliMall.product.entity.PmsCategoryEntity;
 import com.example.guliMall.product.service.PmsCategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("pmsCategoryService")
@@ -23,6 +24,8 @@ public class PmsCategoryServiceImpl extends ServiceImpl<PmsCategoryDao, PmsCateg
 
 
 
+    @Autowired
+    PmsCategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -51,6 +54,37 @@ public class PmsCategoryServiceImpl extends ServiceImpl<PmsCategoryDao, PmsCateg
 
 
         return collect;
+    }
+
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+
+        List<Long> paths=new ArrayList<>();
+
+        List<Long> parentPath = findParentPath(catelogId, paths);
+        Collections.reverse(parentPath);
+
+
+        return (Long[]) parentPath.toArray(new Long[parentPath.size()]) ;
+    }
+
+    @Override
+    //級聯更細
+    @Transactional
+    public void updateCascade(PmsCategoryEntity pmsCategory) {
+        this.updateById(pmsCategory);
+        categoryBrandRelationService.updateCategory(pmsCategory.getCatId(),pmsCategory.getName());
+
+    }
+
+    private List<Long> findParentPath(Long catelogId, List<Long> paths){
+        paths.add(catelogId);
+        PmsCategoryEntity byId = this.getById(catelogId);
+        if(byId.getParentCid()!=0){
+            findParentPath(byId.getParentCid(),paths);
+        }
+
+        return paths;
     }
 
     //查找所有菜单子菜单

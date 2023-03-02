@@ -19,5 +19,11 @@ public interface PmsCategoryBrandRelationService extends IService<PmsCategoryBra
     PageUtils queryPage(Map<String, Object> params);
 
     void removeMenuByids(List<Long> asList);
+
+    void saveDetail(PmsCategoryBrandRelationEntity pmsCategoryBrandRelation);
+
+    void updateBrand(Long brandId, String name);
+
+    void updateCategory(Long catId, String name);
 }
 

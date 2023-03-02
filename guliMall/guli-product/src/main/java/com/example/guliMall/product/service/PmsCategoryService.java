@@ -19,6 +19,9 @@ public interface PmsCategoryService extends IService<PmsCategoryEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     List<PmsCategoryEntity> listWithTree();
+    Long[] findCatelogPath(Long catelogId);
+
+    void updateCascade(PmsCategoryEntity pmsCategory);
 
 }
 

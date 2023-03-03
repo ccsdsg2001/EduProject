@@ -3,8 +3,10 @@ package com.example.guliMall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.common.utils.PageUtils;
 import com.example.guliMall.product.entity.PmsAttrGroupEntity;
+import com.example.guliMall.product.vo.AttrGroupWithAttrsVo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,6 +23,8 @@ public interface PmsAttrGroupService extends IService<PmsAttrGroupEntity> {
 
     PageUtils queryPage(Map<String, Object> params, Long catelogId);
 
+
+    List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCateLogId(Long catelogId);
 
 }
 

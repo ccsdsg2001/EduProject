@@ -2,7 +2,9 @@ package com.example.guliMall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.common.utils.PageUtils;
+import com.example.guliMall.product.entity.PmsSpuInfoDescEntity;
 import com.example.guliMall.product.entity.PmsSpuInfoEntity;
+import com.example.guliMall.product.vo.SpuSaveVo;
 
 import java.util.Map;
 
@@ -16,5 +18,11 @@ import java.util.Map;
 public interface PmsSpuInfoService extends IService<PmsSpuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void saveSpuInfo(SpuSaveVo vo);
+
+    void saveBaseSquInfo(PmsSpuInfoEntity infoEntity);
+
+    void saveSpuInfoDesc(PmsSpuInfoDescEntity descEntity);
 }
 

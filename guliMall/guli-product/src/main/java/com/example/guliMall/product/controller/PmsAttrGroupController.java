@@ -9,6 +9,7 @@ import com.example.guliMall.product.service.PmsAttrAttrgroupRelationService;
 import com.example.guliMall.product.service.PmsAttrService;
 import com.example.guliMall.product.service.PmsCategoryService;
 import com.example.guliMall.product.vo.AttrGroupRelationVo;
+import com.example.guliMall.product.vo.AttrGroupWithAttrsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,16 @@ public class PmsAttrGroupController {
     public R addRelation(@RequestBody List<AttrGroupRelationVo>  vos){
         relationService.saveBatch(vos);
         return R.ok();
+    }
+
+    @GetMapping("/{catelogId}/withattr")
+    public R getATTRGroupAttrs(@PathVariable("catelogId")Long catelogId){
+        //查出当前分类下的所有分组
+       List<AttrGroupWithAttrsVo> vos = pmsAttrGroupService.getAttrGroupWithAttrsByCateLogId(catelogId);
+//        查出每个属性分组的所有属性
+
+
+        return R.ok().put("data", vos);
     }
 
 

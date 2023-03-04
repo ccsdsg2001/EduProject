@@ -1,12 +1,18 @@
 package com.example.guliMall.product.service.impl;
 
+import com.example.common.to.SkuReductionTo;
+import com.example.common.to.SpuBoundTo;
+import com.example.common.utils.R;
 import com.example.guliMall.product.entity.*;
+import com.example.guliMall.product.feign.CouponFeignService;
 import com.example.guliMall.product.service.*;
 import com.example.guliMall.product.vo.*;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +48,10 @@ public class PmsSpuInfoServiceImpl extends ServiceImpl<PmsSpuInfoDao, PmsSpuInfo
 
     @Autowired
     SkuSaleAttrValueService skuSaleAttrValueService;
+
+    @Autowired
+    CouponFeignService couponFeignService;
+
 
 
     @Autowired
@@ -119,6 +129,9 @@ public class PmsSpuInfoServiceImpl extends ServiceImpl<PmsSpuInfoDao, PmsSpuInfo
                     skuImagesEntity.setImgUrl(img.getImgUrl());
                     skuImagesEntity.setDefaultImg(img.getDefaultImg());
                     return skuImagesEntity;
+                }).filter(entity->{
+                    //true 为要 false为过滤
+                    return !StringUtils.isEmpty(entity.getImgUrl());
                 }).collect(Collectors.toList());
                 skuImagesService.saveBatch(imagesEntities);
 
@@ -129,7 +142,28 @@ public class PmsSpuInfoServiceImpl extends ServiceImpl<PmsSpuInfoDao, PmsSpuInfo
                     attrValue.setSkuId(skuId);
                     return attrValue;
                 }).collect(Collectors.toList());
+                //TODO:无图片路径的无需保存
                 skuSaleAttrValueService.saveBatch(collect1);
+
+
+                Bounds bounds = vo.getBounds();
+                SpuBoundTo spuBoundTo = new SpuBoundTo();
+                BeanUtils.copyProperties(bounds,spuBoundTo);
+                spuBoundTo.setSpuId(infoEntity.getId());
+
+                R r = couponFeignService.saveSpuBounds(spuBoundTo);
+                if(r.getCode()==0){
+                    log.error("远程保存spu失败");
+                }
+
+                SkuReductionTo skuReductionTo = new SkuReductionTo();
+                BeanUtils.copyProperties(item,skuReductionTo);
+                if(skuReductionTo.getFullCount() >0|| skuReductionTo.getFullPrice().compareTo(new BigDecimal("0"))==1){
+
+                }
+                skuReductionTo.setSkuId(skuId);
+
+                couponFeignService.saveSkuReduction(skuReductionTo);
 
 
             });
@@ -146,6 +180,38 @@ public class PmsSpuInfoServiceImpl extends ServiceImpl<PmsSpuInfoDao, PmsSpuInfo
     @Override
     public void saveSpuInfoDesc(PmsSpuInfoDescEntity descEntity) {
 
+    }
+
+    @Override
+    public PageUtils queryPageByCondition(Map<String, Object> params) {
+        QueryWrapper<PmsSpuInfoEntity> queryWrapper = new QueryWrapper<>();
+
+
+        String key = (String) params.get("key");
+        if (!StringUtils.isEmpty(key)) {
+            queryWrapper.and((wrapper) -> {
+                wrapper.eq("id",key).or().like("spu_name",key);
+            });
+        }
+
+        String status = (String) params.get("status");
+        if (!StringUtils.isEmpty(status)) {
+            queryWrapper.eq("publish_status",status);
+        }
+
+        String brandId = (String) params.get("brandId");
+        if (!StringUtils.isEmpty(brandId) && !"0".equalsIgnoreCase(brandId)) {
+            queryWrapper.eq("brand_id",brandId);
+        }
+
+        String catelogId = (String) params.get("catelogId");
+        if (!StringUtils.isEmpty(catelogId) && !"0".equalsIgnoreCase(catelogId)) {
+            queryWrapper.eq("catalog_id",catelogId);
+        }
+
+        IPage<PmsSpuInfoEntity> page = this.page(new Query<PmsSpuInfoEntity>().getPage(params), queryWrapper);
+
+        return new PageUtils(page);
     }
 
 }

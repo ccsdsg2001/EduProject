@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.common.utils.PageUtils;
 import com.example.guliMall.product.entity.SkuInfoEntity;
 import com.example.guliMall.product.vo.SkuItemVo;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.concurrent.ExecutionException;
  * @email HeJieLin@gulimall.com
  * @date 2020-05-22 19:00:18
  */
+
 public interface SkuInfoService extends IService<SkuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
@@ -32,6 +34,6 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
      * @param skuId
      * @return
      */
-    SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException;
+//    SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException;
 }
 

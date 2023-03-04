@@ -36,7 +36,7 @@ public class PmsSpuInfoController {
      */
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = pmsSpuInfoService.queryPage(params);
+        PageUtils page = pmsSpuInfoService.queryPageByCondition(params);
 
         return R.ok().put("page", page);
     }

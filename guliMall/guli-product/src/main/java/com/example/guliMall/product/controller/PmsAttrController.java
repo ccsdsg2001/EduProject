@@ -1,8 +1,11 @@
 package com.example.guliMall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.example.guliMall.product.entity.ProductAttrValueEntity;
+import com.example.guliMall.product.service.ProductAttrValueService;
 import com.example.guliMall.product.vo.AttrGroupRelationVo;
 import com.example.guliMall.product.vo.attrresponsevo;
 import com.example.guliMall.product.vo.attrvo;
@@ -29,6 +32,18 @@ public class PmsAttrController {
     @Autowired
     private PmsAttrService pmsAttrService;
 
+
+    @Autowired
+    private ProductAttrValueService productAttrValueService;
+
+
+    @GetMapping("/base/listforspu/{spuId}")
+    public R baseAttrlist(@PathVariable("spuId")Long spuId){
+
+        List<ProductAttrValueEntity> productAttrValueEntities = productAttrValueService.baseAttrListforspu(spuId);
+
+        return R.ok().put("data", productAttrValueEntities);
+    }
 
     @GetMapping("/{attrType}/list/{catelogId}")
     public R attrList(@RequestParam Map<String,Object> params,@PathVariable("attrType") String type,
@@ -86,6 +101,12 @@ public class PmsAttrController {
         return R.ok();
     }
 
+    @RequestMapping("/update/{spuId}")
+    public R updatespuid(@PathVariable("spuId") Long spuId
+    ,List<ProductAttrValueEntity> entities){
+        productAttrValueService.updateSpuAttr(spuId,entities);
+        return R.ok();
+    }
     /**
      * 删除
      */

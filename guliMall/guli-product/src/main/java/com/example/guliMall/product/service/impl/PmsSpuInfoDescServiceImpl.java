@@ -1,6 +1,12 @@
 package com.example.guliMall.product.service.impl;
 
+import com.example.common.to.es.SkuEsModel;
+import com.example.guliMall.product.entity.SkuInfoEntity;
+import com.example.guliMall.product.service.SkuInfoService;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -30,5 +36,7 @@ public class PmsSpuInfoDescServiceImpl extends ServiceImpl<PmsSpuInfoDescDao, Pm
     public void saveSpuInfoDesc(PmsSpuInfoDescEntity descEntity) {
         this.baseMapper.insert(descEntity);
     }
+
+
 
 }

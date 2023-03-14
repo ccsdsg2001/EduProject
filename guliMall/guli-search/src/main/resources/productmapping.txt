@@ -1,0 +1,72 @@
+{
+  "product" : {
+    "mappings" : {
+      "properties" : {
+        "attrs" : {
+          "type" : "nested",
+          "properties" : {
+            "attrId" : {
+              "type" : "long"
+            },
+            "attrName" : {
+              "type" : "keyword",
+              "index" : false,
+              "doc_values" : false
+            },
+            "attrValue" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "brandId" : {
+          "type" : "long"
+        },
+        "brandImg" : {
+          "type" : "keyword",
+          "index" : false,
+          "doc_values" : false
+        },
+        "brandName" : {
+          "type" : "keyword",
+          "index" : false,
+          "doc_values" : false
+        },
+        "catalogId" : {
+          "type" : "long"
+        },
+        "catalogName" : {
+          "type" : "keyword",
+          "index" : false,
+          "doc_values" : false
+        },
+        "hasStock" : {
+          "type" : "boolean"
+        },
+        "hotScore" : {
+          "type" : "long"
+        },
+        "saleCount" : {
+          "type" : "long"
+        },
+        "skuId" : {
+          "type" : "long"
+        },
+        "skuImg" : {
+          "type" : "keyword",
+          "index" : false,
+          "doc_values" : false
+        },
+        "skuPrice" : {
+          "type" : "keyword"
+        },
+        "skuTitle" : {
+          "type" : "text",
+          "analyzer" : "ik_smart"
+        },
+        "spuId" : {
+          "type" : "keyword"
+        }
+      }
+    }
+  }
+}

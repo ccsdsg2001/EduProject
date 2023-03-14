@@ -265,4 +265,12 @@ public class PmsAttrServiceImpl extends ServiceImpl<PmsAttrDao, PmsAttrEntity> i
 
         return pageUtils;
     }
+
+    @Override
+    public List<Long> selectSearchAttrs(List<Long> attrIds) {
+
+
+
+        return  baseMapper.selectSearchAttrs(attrIds);
+    }
 }

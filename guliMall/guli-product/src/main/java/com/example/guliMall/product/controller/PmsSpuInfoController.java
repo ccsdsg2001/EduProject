@@ -5,11 +5,7 @@ import java.util.Map;
 
 import com.example.guliMall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.guliMall.product.entity.PmsSpuInfoEntity;
 import com.example.guliMall.product.service.PmsSpuInfoService;
@@ -52,6 +48,12 @@ public class PmsSpuInfoController {
         return R.ok().put("spuInfo", pmsSpuInfo);
     }
 
+    @PostMapping("/{spuId}/up")
+    public  R spuUp(@PathVariable("spuId") Long spuid ){
+        pmsSpuInfoService.up(spuid);
+
+        return R.ok();
+    }
     /**
      * 保存
      */

@@ -48,12 +48,21 @@ spring:
             - RewritePath=/api/thirdparty/(?<segment>.*),/$\{segment}
 
 
+
+
+
+
         - id: admin_route
           uri: lb://renren-fast
           predicates:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+
+        - id: mall_host_route
+          uri: lb://gulimall-product
+          predicates:
+            - Host=**.mall.com,mall.com
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848

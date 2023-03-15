@@ -17,6 +17,9 @@ spring:
     name: gulimall-product
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
+
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   global-config:
@@ -26,6 +29,5 @@ mybatis-plus:
       logic-not-delete-value: 0
 server:
   port: 10000
-
 
 

@@ -7712,3 +7712,89 @@ Error starting ApplicationContext. To display the conditions report re-run your 
                 com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2023-03-14 21:28:24.287 [SpringContextShutdownHook] INFO 
                 com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-03-16 23:36:39.021 [main] INFO 
+                com.example.demo.edu.EduApplication - The following profiles are active: dev
+2023-03-16 23:36:42.133 [main] INFO 
+                o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-16 23:36:42.137 [main] INFO 
+                o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2023-03-16 23:36:42.210 [main] INFO 
+                o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43ms. Found 0 repository interfaces.
+2023-03-16 23:36:43.156 [main] INFO 
+                o.springframework.cloud.context.scope.GenericScope - BeanFactory id=9d034303-9dda-3966-bf57-d66cbbb1e52a
+2023-03-16 23:36:43.577 [main] INFO 
+                o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-16 23:36:43.657 [main] INFO 
+                o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConfig' of type [com.example.config.RedisConfig$$EnhancerBySpringCGLIB$$caada147] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-16 23:36:43.793 [main] INFO 
+                o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-16 23:36:44.550 [main] INFO 
+                o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8001 (http)
+2023-03-16 23:36:44.595 [main] INFO 
+                org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8001"]
+2023-03-16 23:36:44.596 [main] INFO 
+                org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-03-16 23:36:44.597 [main] INFO 
+                org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2023-03-16 23:36:44.959 [main] INFO 
+                o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-03-16 23:36:44.964 [main] INFO 
+                org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 5898 ms
+2023-03-16 23:36:45.747 [main] INFO 
+                com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-03-16 23:36:46.505 [main] INFO 
+                com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-03-16 23:36:50.060 [main] INFO 
+                s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-03-16 23:36:50.151 [main] INFO 
+                com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2023-03-16 23:36:50.160 [main] INFO 
+                com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2023-03-16 23:36:50.441 [main] INFO 
+                o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2023-03-16 23:36:53.337 [main] INFO 
+                org.springframework.cloud.commons.util.InetUtils - Cannot determine local hostname
+2023-03-16 23:36:53.427 [main] INFO 
+                o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService
+2023-03-16 23:36:55.452 [main] INFO 
+                org.springframework.cloud.commons.util.InetUtils - Cannot determine local hostname
+2023-03-16 23:36:57.413 [main] INFO 
+                org.springframework.cloud.commons.util.InetUtils - Cannot determine local hostname
+2023-03-16 23:36:57.698 [main] INFO 
+                s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2023-03-16 23:36:57.741 [main] INFO 
+                s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-03-16 23:36:57.817 [main] INFO 
+                s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2023-03-16 23:36:58.210 [main] INFO 
+                s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
+2023-03-16 23:36:58.217 [main] INFO 
+                s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getUsingGET_1
+2023-03-16 23:36:58.251 [main] INFO 
+                s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2023-03-16 23:36:58.274 [main] INFO 
+                s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getUsingGET_2
+2023-03-16 23:36:58.305 [main] INFO 
+                s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: pageTeacherConditionUsingPOST_1
+2023-03-16 23:36:58.332 [main] INFO 
+                s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: addUsingPOST_1
+2023-03-16 23:36:58.376 [main] INFO 
+                org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8001"]
+2023-03-16 23:36:58.430 [main] INFO 
+                o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8001 (http) with context path ''
+2023-03-16 23:36:58.465 [main] INFO 
+                o.s.c.alibaba.nacos.registry.NacosServiceRegistry - nacos registry, service-edu 192.168.56.1:8001 register finished
+2023-03-16 23:37:00.096 [main] INFO 
+                org.springframework.cloud.commons.util.InetUtils - Cannot determine local hostname
+2023-03-16 23:37:00.102 [main] INFO 
+                com.example.demo.edu.EduApplication - Started EduApplication in 29.189 seconds (JVM running for 32.679)
+2023-03-16 23:45:28.929 [SpringContextShutdownHook] INFO 
+                o.s.c.alibaba.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2023-03-16 23:45:28.932 [SpringContextShutdownHook] INFO 
+                o.s.c.alibaba.nacos.registry.NacosServiceRegistry - De-registration finished.
+2023-03-16 23:45:28.934 [SpringContextShutdownHook] INFO 
+                o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-03-16 23:45:28.961 [SpringContextShutdownHook] INFO 
+                com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-03-16 23:45:28.976 [SpringContextShutdownHook] INFO 
+                com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

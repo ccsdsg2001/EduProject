@@ -362,3 +362,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
                 com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
 2023-03-14 20:40:48.954 [main] WARN 
                 com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2023-03-16 23:36:50.116 [main] WARN 
+                com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2023-03-16 23:36:50.159 [main] WARN 
+                com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.

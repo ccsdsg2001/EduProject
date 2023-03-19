@@ -92,6 +92,8 @@ public class PmsCategoryServiceImpl extends ServiceImpl<PmsCategoryDao, PmsCateg
         // return this.baseMapper.selectList(
         //         new QueryWrapper<CategoryEntity>().eq("parent_cid", parentCid));
     }
+
+
     @Override
     public Map<String, List<Catelog2Vo>> getCatalogJson() {
         System.out.println("查询了数据库");
